@@ -65,13 +65,16 @@ class Stage {
           this.fighter1El = fighter1El;
           this.fighter2El = fighter2El;
           this.log = logObject;
+
      }
 
      start() {
           this.update();
-          this.fighter1El.querySelector('.attackButton').addEventListener('click', () => this.doAttack(this.fighter1, this.fighter2))
-          this.fighter2El.querySelector('.attackButton').addEventListener('click', () => this.doAttack(this.fighter2, this.fighter1))
-          
+
+               this.fighter1El.querySelector('.attackButton').addEventListener('click', () => this.doAttack(this.fighter1, this.fighter2));
+               this.fighter2El.querySelector('.attackButton').addEventListener('click', () => this.doAttack(this.fighter2, this.fighter1));          
+
+
           //heal
           this.fighter1El.querySelector('.healButton').addEventListener('click', () => this.heal(this.fighter1, this.fighter2))
           this.fighter2El.querySelector('.healButton').addEventListener('click', () => this.heal(this.fighter2, this.fighter1))
@@ -88,11 +91,13 @@ class Stage {
           let f2Pct = (this.fighter2.life / this.fighter2.maxLife) * 100;
           this.fighter2El.querySelector('.bar').style.width = `${f2Pct}%`;
 
+
      }
 
      doAttack(attacking, attacked) {
           if (attacking.life <= 0 || attacked.life <=0) {
-               this.log.addMessage('Alguem morreu')
+               this.log.addMessage('Alguem morreu');
+
                return;
           }
 
